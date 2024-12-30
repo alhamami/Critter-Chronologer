@@ -2,8 +2,6 @@ package com.udacity.jdnd.course3.critter;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
-import com.udacity.jdnd.course3.critter.pet.PetController;
-import com.udacity.jdnd.course3.critter.pet.PetDTO;
 import com.udacity.jdnd.course3.critter.pet.PetType;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
