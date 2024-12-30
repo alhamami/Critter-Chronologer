@@ -15,7 +15,8 @@ public class Customer {
     private String name;
     private String phoneNumber;
     private String notes;
-    @OneToMany(targetEntity = Pet.class, fetch = FetchType.LAZY)
+    @ManyToMany
+    @JoinTable(name = "customer_pets", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "pets_id"))
     private List<Pet> pets;
 
 

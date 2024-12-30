@@ -1,12 +1,19 @@
 package com.udacity.jdnd.course3.critter.pet.Entity;
 
+import java.time.LocalDate;
+import java.util.List;
+
 import com.udacity.jdnd.course3.critter.pet.PetType;
 import com.udacity.jdnd.course3.critter.schedule.Entity.Schedule;
 import com.udacity.jdnd.course3.critter.user.Entity.Customer;
-import jakarta.persistence.*;
 
-import java.time.LocalDate;
-import java.util.List;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Pet {
@@ -36,7 +43,7 @@ public class Pet {
     }
 
     public Pet(Long id, PetType type, String name, Customer customer, LocalDate birthDate, String notes,
-               List<Schedule> schedules) {
+            List<Schedule> schedules) {
         this.id = id;
         this.type = type;
         this.name = name;

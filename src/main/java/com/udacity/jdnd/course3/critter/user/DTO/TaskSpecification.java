@@ -1,9 +1,8 @@
 package com.udacity.jdnd.course3.critter.user.DTO;
 
-import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
-
 import java.time.DayOfWeek;
 import java.util.Set;
+import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 
 public class TaskSpecification {
 

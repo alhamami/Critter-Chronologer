@@ -3,6 +3,16 @@ package com.udacity.jdnd.course3.critter;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 import com.udacity.jdnd.course3.critter.pet.PetType;
+import com.udacity.jdnd.course3.critter.pet.Controller.PetController;
+import com.udacity.jdnd.course3.critter.pet.DTO.PetDTO;
+import com.udacity.jdnd.course3.critter.schedule.Controller.ScheduleController;
+import com.udacity.jdnd.course3.critter.schedule.DTO.ScheduleDTO;
+import com.udacity.jdnd.course3.critter.user.*;
+import com.udacity.jdnd.course3.critter.user.Controller.UserController;
+import com.udacity.jdnd.course3.critter.user.DTO.CustomerDTO;
+import com.udacity.jdnd.course3.critter.user.DTO.EmployeeDTO;
+import com.udacity.jdnd.course3.critter.user.DTO.EmployeeRequestDTO;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

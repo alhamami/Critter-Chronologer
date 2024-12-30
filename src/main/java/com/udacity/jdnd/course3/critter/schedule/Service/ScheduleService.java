@@ -1,5 +1,11 @@
 package com.udacity.jdnd.course3.critter.schedule.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import com.udacity.jdnd.course3.critter.user.Service.EmployeeService;
+import org.springframework.stereotype.Service;
+
 import com.udacity.jdnd.course3.critter.pet.Entity.Pet;
 import com.udacity.jdnd.course3.critter.pet.Service.PetService;
 import com.udacity.jdnd.course3.critter.schedule.DTO.ScheduleDTO;
@@ -7,23 +13,15 @@ import com.udacity.jdnd.course3.critter.schedule.Entity.Schedule;
 import com.udacity.jdnd.course3.critter.schedule.Repo.ScheduleRepo;
 import com.udacity.jdnd.course3.critter.user.Entity.Employee;
 import com.udacity.jdnd.course3.critter.user.Service.CustomerService;
-import com.udacity.jdnd.course3.critter.user.Service.EmployeeService;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class ScheduleService {
 
     private final ScheduleRepo scheduleRepo;
     private final PetService petService;
-    private final CustomerService customerService;
     private final EmployeeService employeeService;
 
-    public ScheduleService(CustomerService customerService, ScheduleRepo scheduleRepo, PetService petService, EmployeeService employeeService) {
+    public ScheduleService(ScheduleRepo scheduleRepo, PetService petService, EmployeeService employeeService) {
         this.scheduleRepo = scheduleRepo;
-        this.customerService = customerService;
         this.petService = petService;
         this.employeeService = employeeService;
     }

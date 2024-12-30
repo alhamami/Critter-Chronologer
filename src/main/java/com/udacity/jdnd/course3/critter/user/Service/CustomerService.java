@@ -1,15 +1,15 @@
 package com.udacity.jdnd.course3.critter.user.Service;
 
-import com.udacity.jdnd.course3.critter.pet.Entity.Pet;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.udacity.jdnd.course3.critter.pet.Repo.PetRepo;
+import org.springframework.stereotype.Service;
 import com.udacity.jdnd.course3.critter.user.DTO.CustomerDTO;
 import com.udacity.jdnd.course3.critter.user.Entity.Customer;
 import com.udacity.jdnd.course3.critter.user.Repo.CustomerRepo;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
+import com.udacity.jdnd.course3.critter.pet.Entity.Pet;
 
 @Service
 public class CustomerService {
@@ -23,6 +23,7 @@ public class CustomerService {
         this.petRepo = petRepo;
     }
 
+
     public CustomerDTO createNewCustomer(CustomerDTO newCustomerDTO) {
 
         CustomerDTO customerDTO = new CustomerDTO();
@@ -34,12 +35,15 @@ public class CustomerService {
         customer.setNotes(newCustomerDTO.getNotes());
 
         List<Pet> pets = new ArrayList<>();
-        for(Long petId : newCustomerDTO.getPetIds()){
-            Optional<Pet> pet = petRepo.findById(petId);
-            if(pet.isPresent()){
-                pets.add(pet.get());
+        if(newCustomerDTO.getPetIds() != null) {
+            for(Long petId : newCustomerDTO.getPetIds()){
+                Optional<Pet> pet = petRepo.findById(petId);
+                if(pet.isPresent()){
+                    pets.add(pet.get());
+                }
             }
         }
+
 
         customer.setPets(pets);
 

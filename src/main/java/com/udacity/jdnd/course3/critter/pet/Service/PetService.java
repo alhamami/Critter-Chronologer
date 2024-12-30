@@ -1,15 +1,16 @@
 package com.udacity.jdnd.course3.critter.pet.Service;
 
-import com.udacity.jdnd.course3.critter.pet.DTO.PetDTO;
-import com.udacity.jdnd.course3.critter.pet.Entity.Pet;
-import com.udacity.jdnd.course3.critter.pet.Repo.PetRepo;
-import com.udacity.jdnd.course3.critter.user.Entity.Customer;
-import com.udacity.jdnd.course3.critter.user.Service.CustomerService;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import com.udacity.jdnd.course3.critter.user.DTO.CustomerDTO;
+import com.udacity.jdnd.course3.critter.user.Entity.Customer;
+import com.udacity.jdnd.course3.critter.user.Service.CustomerService;
+import org.springframework.stereotype.Service;
+import com.udacity.jdnd.course3.critter.pet.DTO.PetDTO;
+import com.udacity.jdnd.course3.critter.pet.Entity.Pet;
+import com.udacity.jdnd.course3.critter.pet.Repo.PetRepo;
 
 @Service
 public class PetService {
@@ -17,7 +18,7 @@ public class PetService {
     private final PetRepo petRepo;
     private final CustomerService customerService;
 
-    public PetService(PetRepo petRepo, CustomerService customerService) {
+    public PetService(PetRepo petRepo,  CustomerService customerService) {
         this.petRepo = petRepo;
         this.customerService = customerService;
     }
@@ -35,11 +36,38 @@ public class PetService {
         pet.setType(newPetDTO.getType());
 
         Customer customer = customerService.findCustoemrByIdAsIs(newPetDTO.getOwnerId());
+
+        for(Pet petItem : customer.getPets()){
+            if(petItem.getName().equals(petDTO.getName())){
+                return petDTO;
+            }
+        }
+
         pet.setCustomer(customer);
 
         pet.setBirthDate(newPetDTO.getBirthDate());
         pet.setNotes(newPetDTO.getNotes());
         Pet savedPet = petRepo.save(pet);
+
+
+        Customer ownerCustomer = savedPet.getCustomer();
+
+        List<Pet> pets = customer.getPets();
+        pets.add(savedPet);
+        ownerCustomer.setPets(pets);
+
+        CustomerDTO customerDTO = new CustomerDTO();
+        customerDTO.setId(ownerCustomer.getId());
+        customerDTO.setName(customer.getName());
+        customerDTO.setPhoneNumber(ownerCustomer.getPhoneNumber());
+        customerDTO.setNotes(ownerCustomer.getNotes());
+
+        List<Long> petIds = new ArrayList<>();
+        for(Pet petItem : ownerCustomer.getPets()){
+            petIds.add(petItem.getId());
+        }
+        customerDTO.setPetIds(petIds);
+        customerService.createNewCustomer(customerDTO);
 
         if(savedPet != null) {
             petDTO.setId(savedPet.getId());

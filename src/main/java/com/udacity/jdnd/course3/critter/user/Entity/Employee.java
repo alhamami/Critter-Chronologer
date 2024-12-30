@@ -1,12 +1,19 @@
 package com.udacity.jdnd.course3.critter.user.Entity;
 
-import com.udacity.jdnd.course3.critter.schedule.Entity.Schedule;
-import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
-import jakarta.persistence.*;
-
 import java.time.DayOfWeek;
 import java.util.List;
 import java.util.Set;
+
+import com.udacity.jdnd.course3.critter.pet.Entity.Pet;
+import com.udacity.jdnd.course3.critter.schedule.Entity.Schedule;
+import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Employee {
@@ -25,13 +32,13 @@ public class Employee {
     @ManyToMany(targetEntity = Schedule.class)
     private List<Schedule> schedule;
 
-    
+
 
     public Employee() {
     }
 
     public Employee(long id, String name, Set<EmployeeSkill> skills, Set<DayOfWeek> daysAvailable,
-            List<Schedule> schedule) {
+                    List<Schedule> schedule) {
         this.id = id;
         this.name = name;
         this.skills = skills;
@@ -80,7 +87,7 @@ public class Employee {
     }
 
 
-    
 
-    
+
+
 }

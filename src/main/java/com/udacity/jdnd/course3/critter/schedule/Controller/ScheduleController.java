@@ -1,11 +1,12 @@
 package com.udacity.jdnd.course3.critter.schedule.Controller;
 
-import com.udacity.jdnd.course3.critter.pet.Service.PetService;
-import com.udacity.jdnd.course3.critter.schedule.DTO.ScheduleDTO;
+
 import com.udacity.jdnd.course3.critter.schedule.Service.ScheduleService;
 import com.udacity.jdnd.course3.critter.user.DTO.CustomerDTO;
 import com.udacity.jdnd.course3.critter.user.Service.CustomerService;
 import org.springframework.web.bind.annotation.*;
+
+import com.udacity.jdnd.course3.critter.schedule.DTO.ScheduleDTO;
 
 import java.util.ArrayList;
 import java.util.List;

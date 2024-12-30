@@ -1,8 +1,9 @@
 package com.udacity.jdnd.course3.critter.schedule.Repo;
 
-import com.udacity.jdnd.course3.critter.schedule.Entity.Schedule;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import com.udacity.jdnd.course3.critter.schedule.Entity.Schedule;
 
 import java.util.List;
 

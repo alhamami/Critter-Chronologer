@@ -1,10 +1,11 @@
 package com.udacity.jdnd.course3.critter.pet.Controller;
 
-import com.udacity.jdnd.course3.critter.pet.DTO.PetDTO;
 import com.udacity.jdnd.course3.critter.pet.Service.PetService;
 import com.udacity.jdnd.course3.critter.user.DTO.CustomerDTO;
 import com.udacity.jdnd.course3.critter.user.Service.CustomerService;
 import org.springframework.web.bind.annotation.*;
+
+import com.udacity.jdnd.course3.critter.pet.DTO.PetDTO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +34,7 @@ public class PetController {
     public PetDTO getPet(@PathVariable long petId) {
         PetDTO petDTO = petService.findPetById(petId);
 
-        if (petDTO == null) {
+        if (petDTO != null) {
             return petDTO;
         }else{
             throw new UnsupportedOperationException("Pet not exist");

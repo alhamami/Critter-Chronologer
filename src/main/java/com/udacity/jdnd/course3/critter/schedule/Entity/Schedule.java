@@ -1,13 +1,19 @@
 package com.udacity.jdnd.course3.critter.schedule.Entity;
 
-import com.udacity.jdnd.course3.critter.pet.Entity.Pet;
-import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
-import com.udacity.jdnd.course3.critter.user.Entity.Employee;
-import jakarta.persistence.*;
-
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
+
+import com.udacity.jdnd.course3.critter.pet.Entity.Pet;
+import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
+import com.udacity.jdnd.course3.critter.user.Entity.Employee;
+
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.ManyToMany;
 
 @Entity
 public class Schedule {
@@ -32,7 +38,7 @@ public class Schedule {
     
 
     public Schedule(Long id, List<Employee> employees, List<Pet> pets, LocalDate date,
-                    Set<EmployeeSkill> activities) {
+            Set<EmployeeSkill> activities) {
         this.id = id;
         this.employees = employees;
         this.pets = pets;
