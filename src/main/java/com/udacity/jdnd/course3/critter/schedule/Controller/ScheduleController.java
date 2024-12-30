@@ -19,12 +19,10 @@ public class ScheduleController {
 
     private final ScheduleService scheduleService;
     private final CustomerService customerService;
-    private final PetService petService;
 
-    public ScheduleController(ScheduleService scheduleService, CustomerService customerService, PetService petService) {
+    public ScheduleController(ScheduleService scheduleService, CustomerService customerService) {
         this.scheduleService = scheduleService;
         this.customerService = customerService;
-        this.petService = petService;
     }
     @PostMapping
     public ScheduleDTO createSchedule(@RequestBody ScheduleDTO scheduleDTO) {
