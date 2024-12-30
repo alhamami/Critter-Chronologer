@@ -1,5 +1,6 @@
 package com.udacity.jdnd.course3.critter.user.Entity;
 
+import com.udacity.jdnd.course3.critter.schedule.Entity.Schedule;
 import com.udacity.jdnd.course3.critter.user.EmployeeSkill;
 import jakarta.persistence.*;
 
